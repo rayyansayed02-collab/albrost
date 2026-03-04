@@ -1,0 +1,71 @@
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, MapPin, Clock } from "lucide-react";
+
+const navItems = ["Home", "Menu", "About", "Contact"];
+
+const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
+  const scrollTo = (id: string) => {
+    document.getElementById(id.toLowerCase())?.scrollIntoView({ behavior: "smooth" });
+    setOpen(false);
+  };
+
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
+      <div className="container mx-auto flex items-center justify-between py-4 px-4">
+        <button onClick={() => scrollTo("home")} className="flex items-center gap-2">
+          <span className="font-display text-3xl tracking-wider text-primary">ALBROST</span>
+          <span className="hidden sm:block text-xs text-muted-foreground font-body">FAST FOOD</span>
+        </button>
+
+        <div className="hidden md:flex items-center gap-8">
+          {navItems.map((item) => (
+            <button
+              key={item}
+              onClick={() => scrollTo(item.toLowerCase())}
+              className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-300 tracking-wide uppercase"
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+
+        <div className="hidden md:flex items-center gap-4 text-xs text-muted-foreground">
+          <span className="flex items-center gap-1"><Clock className="w-3 h-3 text-primary" /> 2 PM – 12 AM</span>
+          <span className="flex items-center gap-1"><MapPin className="w-3 h-3 text-primary" /> Mahim West</span>
+        </div>
+
+        <button onClick={() => setOpen(!open)} className="md:hidden text-foreground">
+          {open ? <X /> : <Menu />}
+        </button>
+      </div>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="md:hidden bg-background border-b border-border overflow-hidden"
+          >
+            <div className="flex flex-col gap-4 p-6">
+              {navItems.map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollTo(item.toLowerCase())}
+                  className="text-left font-display text-2xl text-foreground hover:text-primary transition-colors"
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
+};
+
+export default Navbar;

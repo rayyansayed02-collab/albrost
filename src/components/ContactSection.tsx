@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Clock, Phone } from "lucide-react";
+import { MapPin, Clock, Phone, MessageCircle } from "lucide-react";
 
 const ContactSection = () => {
   return (
@@ -16,7 +16,6 @@ const ContactSection = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {/* Map */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -34,7 +33,6 @@ const ContactSection = () => {
             />
           </motion.div>
 
-          {/* Info */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -72,11 +70,27 @@ const ContactSection = () => {
                 <Phone className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h3 className="font-display text-xl text-foreground mb-1">Get In Touch</h3>
-                <p className="font-body text-muted-foreground">
-                  Available on Zomato & Justdial<br />
-                  Walk-ins welcome!
-                </p>
+                <h3 className="font-display text-xl text-foreground mb-1">Call Us</h3>
+                <a href="tel:+918976638228" className="font-body text-primary hover:underline text-lg font-semibold">
+                  +91 89766 38228
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-xl bg-[hsl(142,70%,40%)]/10 flex items-center justify-center shrink-0">
+                <MessageCircle className="w-6 h-6 text-[hsl(142,70%,40%)]" />
+              </div>
+              <div>
+                <h3 className="font-display text-xl text-foreground mb-1">WhatsApp</h3>
+                <a
+                  href="https://wa.me/918976638228"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-body text-[hsl(142,70%,40%)] hover:underline font-semibold"
+                >
+                  Order on WhatsApp →
+                </a>
               </div>
             </div>
           </motion.div>

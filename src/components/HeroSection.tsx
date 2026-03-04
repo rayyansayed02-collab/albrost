@@ -1,18 +1,16 @@
 import { motion } from "framer-motion";
-import { MapPin, Star, ArrowDown } from "lucide-react";
+import { MapPin, Star, ArrowDown, MessageCircle } from "lucide-react";
 import heroImage from "@/assets/hero-food.jpg";
 
 const HeroSection = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
       <div className="absolute inset-0">
         <img src={heroImage} alt="Albrost Fast Food spread" className="w-full h-full object-cover" />
         <div className="absolute inset-0" style={{ background: "var(--gradient-hero)" }} />
         <div className="absolute inset-0 bg-background/40" />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -50,6 +48,14 @@ const HeroSection = () => {
             >
               Explore Menu
             </button>
+            <a
+              href="https://wa.me/918976638228?text=Hi%20Albrost!%20I'd%20like%20to%20place%20an%20order."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-body font-semibold text-sm tracking-wide uppercase bg-[hsl(142,70%,40%)] text-white hover:bg-[hsl(142,70%,35%)] transition-all"
+            >
+              <MessageCircle className="w-4 h-4" /> Order Now
+            </a>
             <button
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
               className="px-8 py-4 rounded-lg font-body font-semibold text-sm tracking-wide uppercase border border-border text-foreground hover:border-primary hover:text-primary transition-all"

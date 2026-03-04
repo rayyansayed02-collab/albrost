@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Plus, Minus } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
 type MenuItem = { name: string; price: string };
 type Category = { name: string; items: MenuItem[] };
@@ -75,8 +77,13 @@ const menuData: Category[] = [
   },
 ];
 
+const parsePrice = (p: string) => parseInt(p.replace(/[^\d]/g, ""), 10);
+
 const MenuSection = () => {
   const [activeCategory, setActiveCategory] = useState(0);
+  const { items, addItem, updateQuantity } = useCart();
+
+  const getQty = (name: string) => items.find((i) => i.name === name)?.quantity || 0;
 
   return (
     <section id="menu" className="py-24 bg-background">
@@ -91,7 +98,6 @@ const MenuSection = () => {
           <h2 className="font-display text-6xl sm:text-7xl text-gradient mt-2">OUR MENU</h2>
         </motion.div>
 
-        {/* Category tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">
           {menuData.map((cat, i) => (
             <button
@@ -108,7 +114,6 @@ const MenuSection = () => {
           ))}
         </div>
 
-        {/* Menu items */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeCategory}
@@ -121,18 +126,46 @@ const MenuSection = () => {
             <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 card-shadow">
               <h3 className="font-display text-3xl text-primary mb-6">{menuData[activeCategory].name}</h3>
               <div className="space-y-0">
-                {menuData[activeCategory].items.map((item, i) => (
-                  <motion.div
-                    key={item.name}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                    className="flex items-center justify-between py-3 border-b border-border/50 last:border-0"
-                  >
-                    <span className="font-body text-foreground">{item.name}</span>
-                    <span className="font-body font-semibold text-primary">{item.price}</span>
-                  </motion.div>
-                ))}
+                {menuData[activeCategory].items.map((item, i) => {
+                  const qty = getQty(item.name);
+                  const price = parsePrice(item.price);
+                  return (
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.05 }}
+                      className="flex items-center justify-between py-3 border-b border-border/50 last:border-0 gap-3"
+                    >
+                      <span className="font-body text-foreground flex-1">{item.name}</span>
+                      <span className="font-body font-semibold text-primary shrink-0">{item.price}</span>
+                      {qty === 0 ? (
+                        <button
+                          onClick={() => addItem(item.name, price)}
+                          className="w-8 h-8 rounded-lg bg-primary text-primary-foreground flex items-center justify-center hover:brightness-110 transition-all shrink-0"
+                        >
+                          <Plus className="w-4 h-4" />
+                        </button>
+                      ) : (
+                        <div className="flex items-center gap-1 shrink-0">
+                          <button
+                            onClick={() => updateQuantity(item.name, qty - 1)}
+                            className="w-7 h-7 rounded-md bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+                          >
+                            <Minus className="w-3 h-3" />
+                          </button>
+                          <span className="w-6 text-center font-body font-semibold text-primary text-sm">{qty}</span>
+                          <button
+                            onClick={() => updateQuantity(item.name, qty + 1)}
+                            className="w-7 h-7 rounded-md bg-muted flex items-center justify-center text-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+                          >
+                            <Plus className="w-3 h-3" />
+                          </button>
+                        </div>
+                      )}
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </motion.div>

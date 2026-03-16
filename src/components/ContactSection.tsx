@@ -46,12 +46,17 @@ const ContactSection = () => {
               </div>
               <div>
                 <h3 className="font-display text-xl text-foreground mb-1">Address</h3>
-                <p className="font-body text-muted-foreground">
+                <a
+                  href="https://www.google.com/maps/search/Albrost+Fast+Food+Mahim+West+Mumbai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-body text-muted-foreground hover:text-primary transition-colors"
+                >
                   Meraj Restaurant, Mohammed Eidu Manzil,<br />
                   Floor-Ground, Plot-74/76, Lady Jamshedji Road,<br />
                   Sonapur, Mahim, Mumbai,<br />
                   Maharashtra 400016, India
-                </p>
+                </a>
               </div>
             </div>
 

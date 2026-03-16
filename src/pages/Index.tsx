@@ -5,6 +5,8 @@ import SpecialOffers from "@/components/SpecialOffers";
 import MenuSection from "@/components/MenuSection";
 import AboutSection from "@/components/AboutSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
+import EventBooking from "@/components/EventBooking";
+import PlatformLinks from "@/components/PlatformLinks";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import BackToTop from "@/components/BackToTop";
@@ -19,6 +21,8 @@ const Index = () => {
         <MenuSection />
         <AboutSection />
         <TestimonialsSection />
+        <EventBooking />
+        <PlatformLinks />
         <ContactSection />
         <Footer />
         <BackToTop />

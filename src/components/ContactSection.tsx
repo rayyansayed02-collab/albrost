@@ -47,8 +47,10 @@ const ContactSection = () => {
               <div>
                 <h3 className="font-display text-xl text-foreground mb-1">Address</h3>
                 <p className="font-body text-muted-foreground">
-                  Near Lady Jamshedji Road, Sonapur,<br />
-                  Mahim West, Mumbai
+                  Meraj Restaurant, Mohammed Eidu Manzil,<br />
+                  Floor-Ground, Plot-74/76, Lady Jamshedji Road,<br />
+                  Sonapur, Mahim, Mumbai,<br />
+                  Maharashtra 400016, India
                 </p>
               </div>
             </div>

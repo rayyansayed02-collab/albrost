@@ -55,6 +55,17 @@ const menuData: Category[] = [
       { name: "Melting Pizza", price: "₹120" },
     ],
   },
+    {
+    name: "Sandwich",
+    items: [
+      { name: "Chicken melting Sandwich(7\")", price: "₹130" },
+      { name: "Chicken bbq melting Sandwich", price: "₹105" },
+      { name: "Chicken tikka melting Sandwich", price: "₹110" },
+      { name: "Chicken grilled Sandwich", price: "₹110" },
+      { name: "Chicken tandoori Sandwich", price: "₹110" },
+      { name: "Chicken showarma Sandwich", price: "₹120" },
+    ],
+  },
   {
     name: "Veg Burger",
     items: [

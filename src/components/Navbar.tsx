@@ -21,8 +21,7 @@ const Navbar = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
         <div className="container mx-auto flex items-center justify-between py-4 px-4">
           <button onClick={() => scrollTo("home")} className="flex items-center gap-2">
-            <span className="font-display text-3xl tracking-wider text-primary">ALBROST</span>
-            <span className="hidden sm:block text-xs text-muted-foreground font-body">FAST FOOD</span>
+            <img src="/logo.png" alt="Albrost" className="h-10 w-auto" />
           </button>
 
           <div className="hidden md:flex items-center gap-8">

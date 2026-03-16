@@ -47,7 +47,7 @@ const menuData: Category[] = [
   {
     name: "Chicken Pizza",
     items: [
-      { name: "Classic Pizza (7\")", price: "₹100" },
+      { name: "Classic Pizza ", price: "₹100" },
       { name: "Shawarma Pizza", price: "₹105" },
       { name: "Tikka Nawabi Pizza", price: "₹110" },
       { name: "Italian Pizza", price: "₹110" },
@@ -58,7 +58,7 @@ const menuData: Category[] = [
     {
     name: "Sandwich",
     items: [
-      { name: "Chicken melting Sandwich(7\")", price: "₹130" },
+      { name: "Chicken melting Sandwich", price: "₹130" },
       { name: "Chicken bbq melting Sandwich", price: "₹105" },
       { name: "Chicken tikka melting Sandwich", price: "₹110" },
       { name: "Chicken grilled Sandwich", price: "₹110" },
